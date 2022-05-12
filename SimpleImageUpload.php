@@ -22,7 +22,7 @@ $file_ext=array('png','jpeg', 'jpg', 'gif');
 $ext=pathinfo($image['name'], PATHINFO_EXTENSION);
 
 if(!in_array($ext, $file_ext)){
-return "Please upload only jpeg or jpg image.";
+return "Please upload valid image file: png, jpeg, jpg, gif";
 exit;
 }
 
@@ -33,7 +33,7 @@ mkdir('images', 0777, true);
 
 }
 
-$newimage='images/'.rand(1111, time()).$image['name'];
+$newimage= __DIR__'/images/'.rand(1111, time()).$image['name'];
 move_uploaded_file($image['tmp_name'], $newimage);
 }
 
